@@ -11,8 +11,8 @@ if __name__ == '__main__':
     linker = EntityLinkingPipeline(
             NGramQueryCreator(),
             StringMatchCandidatesGenerator(config, is_use_predefined_candidates=True),
-
+            CosineSimRanger()
         )
     term = 'язык программирования Python'
     context = ['язык программирования Python', 'использовался', 'в']
-    print(ru_el.get_linked_mention(term, context))
+    print(linker.run(term, context))
